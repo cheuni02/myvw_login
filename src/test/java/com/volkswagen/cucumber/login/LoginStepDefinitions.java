@@ -18,38 +18,50 @@ public class LoginStepDefinitions {
 
     private WebDriver driver;
     private String userName, passWord;
+    private LoginPage loginPage;
+    //LoginPage loginPage = new LoginPage(driver);
 
 
     @Given("^I am on the sign in page$")
     public void iAmOnTheSignInPage() throws Throwable {
         driver = new FirefoxDriver();
+        //this.loginPage = loginPage;
         driver.navigate().to("https://www.volkswagen.co.uk/owners/my");
 
         //Assert.assertTrue("title should be blah",driver.getTitle().startsWith("Login : Volkswagen UK"));
     }
 
+//    public SomeStepDefs(LoginPage loginPage) {
+//        this.loginPage = loginPage;
+//    }
+
     @When("^I type into username field : '(.*)'$") //'automatedtestdragon-A(\\d+)@example\.com'$")
     public void iTypeIntoUsernameFieldAutomatedtestdragonAExampleCom(String userName) throws Throwable {
         this.userName = userName;
-        LoginPage loginpage = new LoginPage(driver);
-        loginpage.typeUserName(this.userName);
+        loginPage = new LoginPage(driver);
+
+            loginPage.typeUserName(this.userName);
+
+
+
     }
 
     @And("^I type into password field : '(.*)'$") //'Abcd!(\\d+)'$")
     public void iTypeIntoPasswordFieldAbcd(String passWord) throws Throwable {
         this.passWord = passWord;
-        LoginPage loginpage = new LoginPage(driver);
-        loginpage.typePassword(this.passWord);
+        loginPage = new LoginPage(driver);
+        loginPage.typePassword(this.passWord);
     }
 
     @And("^press login$")
     public void pressLogin() throws Throwable {
-        LoginPage loginpage = new LoginPage(driver);
-        loginpage.signIn();
+       loginPage = new LoginPage(driver);
+       loginPage.signIn();
     }
 
     @Then("^I should be able to log in$")
     public void iShouldBeAbleToLogIn() throws Throwable {
+        driver.quit();
     }
 
 

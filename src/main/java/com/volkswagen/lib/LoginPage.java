@@ -15,7 +15,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-
     public void typeUserName (String userName){
         WebElement username = driver.findElement(By.id("username"));
         username.sendKeys(userName);
