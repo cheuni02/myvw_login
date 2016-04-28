@@ -19,8 +19,6 @@ public class LoginStepDefinitions {
     private WebDriver driver;
     private String userName, passWord;
     private LoginPage loginPage;
-    //LoginPage loginPage = new LoginPage(driver);
-
 
     @Given("^I am on the sign in page$")
     public void iAmOnTheSignInPage() throws Throwable {
@@ -30,10 +28,6 @@ public class LoginStepDefinitions {
 
         //Assert.assertTrue("title should be blah",driver.getTitle().startsWith("Login : Volkswagen UK"));
     }
-
-//    public SomeStepDefs(LoginPage loginPage) {
-//        this.loginPage = loginPage;
-//    }
 
     @When("^I type into username field : '(.*)'$") //'automatedtestdragon-A(\\d+)@example\.com'$")
     public void iTypeIntoUsernameFieldAutomatedtestdragonAExampleCom(String userName) throws Throwable {
@@ -61,6 +55,10 @@ public class LoginStepDefinitions {
 
     @Then("^I should be able to log in$")
     public void iShouldBeAbleToLogIn() throws Throwable {
+        loginPage = new LoginPage(driver);
+        assertThat(loginPage.loginConfirmationMessagePresent(), is(true));
+
+
         driver.quit();
     }
 

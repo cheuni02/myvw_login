@@ -1,6 +1,7 @@
 package com.volkswagen.lib;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -29,4 +30,26 @@ public class LoginPage {
         WebElement submitbutton = driver.findElement(By.id("login-button"));
         submitbutton.click();
     }
+
+
+    public boolean loginConfirmationMessagePresent(){
+        WebElement messageHolder;
+
+        try{
+            messageHolder = driver.findElement(By.className("no-sub"));
+        }catch(NoSuchElementException e){
+            return false;
+        }
+
+        if(!messageHolder.isDisplayed()){
+            return false;
+        }
+
+        if(!messageHolder.getText().startsWith("Welcome")){
+            return true;
+        }
+
+        return true;
+    }
+
 }

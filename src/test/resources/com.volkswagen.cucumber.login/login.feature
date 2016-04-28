@@ -6,7 +6,7 @@ Feature: Login As a VW User
     Given I am on the sign in page
 
   Scenario: Login as existing user
-    When I type into username field : 'automatedtestdragon-A1@example.com'
-    And I type into password field : 'Abcd!2345'
+    When I type into username field : 'ic66@hotmail.com'
+    And I type into password field : 'Maymaymay1234!'
     And press login
     Then I should be able to log in
